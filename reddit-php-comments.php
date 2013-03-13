@@ -60,7 +60,7 @@
 				echo $spaces . '<li><a href="http://www.reddit.com/user/' . $comment->data->author . '" target="_blank">';
 				echo html_entity_decode($comment->data->author) .'</a>';
 				echo '<br />' . html_entity_decode($comment->data->body) . '</li><br />' . "\n";
-				if ($comment->data->replies != null) {
+				if ($comment->data->replies != null && $comment->data->replies->data->children[0]->kind !== "more") {
 					echo str_repeat(" ",$indent) . '<ul style="padding-left: 25px !important;">' . "\n";
 					$indent += 1;
 						foreach($comment->data->replies->data->children as $reply){
